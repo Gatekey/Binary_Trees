@@ -37,7 +37,7 @@ namespace Trees
                     node.right = new_node;
                 }
             }
-            if (node.data >= value)
+            if (node.data > value)
             {
                 if (node.left != null)
                 {
@@ -74,12 +74,28 @@ namespace Trees
         {
             if (parent != null)
             {
-                Console.Write(parent.data + " ");
+                Console.Write(parent.data);
                 TraversePreOrder(parent.left);
                 TraversePreOrder(parent.right);
             }
         }
 
+        public void getsortedlist(Node parent)
+        {
+            if (parent.left != null)
+            {
+                getsortedlist(parent.left);
+                Console.WriteLine(parent.data);
+            }
+            if (parent.left == null)
+            {
+                Console.WriteLine(parent.data);
+            }
+            if (parent.right != null)
+            {
+                getsortedlist(parent.right);
+            }
+        }
     }
     class Program
     {
@@ -92,7 +108,8 @@ namespace Trees
             btree.insertvalue(btree, 5);
             btree.insertvalue(btree, 4);
             btree.TraversePreOrder(btree.root);
-
+            Console.WriteLine("Getting Sorted Value");
+            btree.getsortedlist(btree.root);
             
         }
     }
